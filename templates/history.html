@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="history-section section-padding">
+    <div class="container" style="min-height: 60vh;">
+        <div class="section-header">
+            <h2>Detection History</h2>
+            <p>A log of previously analyzed media files.</p>
+            <div class="line"></div>
+        </div>
+
+        <div class="history-container box-panel">
+            {% if records %}
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Filename</th>
+                            <th>Timestamp</th>
+                            <th>Analysis Result</th>
+                            <th>Confidence</th>
+                            <th>Reasoning</th>
+                            <th>Status Icon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in records %}
+                        <tr class="result-row {{ 'row-fake' if row.result == 'Fake' else 'row-real' }}">
+                            <td>#{{ row.id }}</td>
+                            <td class="filename-cell"><i class="fa-regular fa-file"></i> {{ row.filename }}</td>
+                            <td>{{ row.timestamp }}</td>
+                            <td>
+                                <span class="badge {{ 'badge-fake' if row.result == 'Fake' else 'badge-real' }}">
+                                    {{ row.result }}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="mini-meter" title="{{ row.confidence }}%">
+                                    <div class="mini-fill {{ 'fill-fake' if row.result == 'Fake' else 'fill-real' }}"
+                                        style="width: {{ row.confidence }}%;"></div>
+                                </div>
+                                <span class="confidence-val">{{ row.confidence }}%</span>
+                            </td>
+                            <td class="reason-cell"
+                                style="font-size: 0.85rem; color: var(--text-secondary); max-width: 250px;">{{
+                                row.reason }}</td>
+                            <td class="icon-cell">
+                                {% if row.result == 'Fake' %}
+                                <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+                                {% else %}
+                                <i class="fa-solid fa-shield-check text-success"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="empty-state text-center">
+                <i class="fa-solid fa-clock-rotate-left fa-3x mb-3 text-muted"></i>
+                <h3>No History Found</h3>
+                <p>You haven't analyzed any media yet.</p>
+                <a href="{{ url_for('detect') }}" class="btn-neon-small mt-3">Start Detection</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

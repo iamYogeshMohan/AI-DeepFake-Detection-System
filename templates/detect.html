@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="detect-section section-padding">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>AI Media Analysis</h2>
+            <p>Upload an image or video to verify its authenticity.</p>
+            <div class="line mx-auto"></div>
+        </div>
+
+        <div class="detect-container">
+            <!-- Upload Area -->
+            <div class="upload-box box-panel" id="upload-area">
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="upload-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h3>Drag & Drop media here</h3>
+                    <p>or</p>
+                    <label for="media-upload" class="btn-neon-small browse-btn">Browse Files</label>
+                    <input type="file" id="media-upload" name="media"
+                        accept="image/png, image/jpeg, image/jpg, video/mp4, video/avi" hidden>
+                    <div class="supported-formats">
+                        Supported: JPG, PNG, MP4, AVI (Max: 50MB)
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Area (Hidden by default) -->
+            <div class="preview-box box-panel" id="preview-area" style="display: none;">
+                <h3>Media Preview</h3>
+                <div class="media-container" id="media-preview-container">
+                    <!-- Image or Video will be injected here via JS -->
+                </div>
+                <div class="preview-actions">
+                    <button type="button" class="btn-outline" id="btn-cancel">Cancel</button>
+                    <button type="button" class="btn-neon" id="btn-analyze">
+                        <i class="fa-solid fa-microchip"></i> Start Analysis
+                    </button>
+                </div>
+            </div>
+
+            <!-- Processing / Loading State (Hidden by default) -->
+            <div class="processing-box box-panel text-center" id="processing-area" style="display: none;">
+                <div class="loader">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="shadow"></div>
+                    <div class="shadow"></div>
+                    <div class="shadow"></div>
+                </div>
+                <h3>AI Model is Analyzing...</h3>
+                <p class="status-text" id="processing-status">Scanning for manipulation artifacts...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Result Area (Hidden by default) -->
+            <div class="result-box box-panel text-center" id="result-area" style="display: none;">
+                <div class="result-icon" id="result-icon">
+                    <i class="fa-solid fa-shield-check"></i>
+                </div>
+                <h2 id="result-title">Result Title</h2>
+                <div class="confidence-meter">
+                    <div class="meter-bg">
+                        <div class="meter-fill" id="meter-fill"></div>
+                    </div>
+                    <p class="confidence-text">Confidence: <span id="confidence-score">0</span>%</p>
+                </div>
+                <div class="result-details">
+                    <p id="result-description">Analysis complete.</p>
+                    <div
+                        style="margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--primary-color); text-align: left;">
+                        <strong>Reasoning:</strong> <span id="result-reason"
+                            style="color: var(--text-secondary);"></span>
+                    </div>
+                </div>
+                <div class="result-actions mt-4">
+                    <button type="button" class="btn-neon-small" id="btn-analyze-another">Analyze Another</button>
+                    <a href="{{ url_for('history') }}" class="btn-outline">View History</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

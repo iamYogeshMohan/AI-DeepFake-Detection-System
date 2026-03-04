@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <div class="badge">AI-Powered Security</div>
+            <h1>Detect AI Generated Media with <span>DeepGuard</span></h1>
+            <p>The rise of deepfake technology has made it harder to trust digital media. DeepGuard uses advanced
+                Convolutional Neural Networks to accurately analyze and expose manipulated images and videos.</p>
+            <div class="hero-actions">
+                <a href="{{ url_for('detect') }}" class="btn-neon">
+                    <i class="fa-solid fa-upload"></i> Upload Media to Detect
+                </a>
+                <a href="#about" class="btn-outline">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="scanner-box">
+                <div class="scanner-line"></div>
+                <div class="face-mesh"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about section-padding" id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2>About The Project</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fa-solid fa-bug warning-color"></i>
+                <h3>The Deepfake Problem</h3>
+                <p>AI-generated fake media is increasingly used for misinformation, identity theft, and fraud.
+                    Distinguishing real from manipulated content is a critical challenge today.</p>
+            </div>
+            <div class="about-card active-card">
+                <i class="fa-solid fa-shield-virus primary-color"></i>
+                <h3>Enter DeepGuard</h3>
+                <p>DeepGuard is a state-of-the-art detection system designed to combat digital forgery by identifying
+                    subtle artifacts left behind by generative AI tools.</p>
+            </div>
+            <div class="about-card">
+                <i class="fa-solid fa-brain secondary-color"></i>
+                <h3>How It Works</h3>
+                <p>By leveraging deep learning models, specifically Convolutional Neural Networks (CNNs), the system
+                    analyzes facial patterns and pixel inconsistencies to verify media authenticity.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Steps -->
+<section class="how-it-works section-padding dark-bg" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <div class="line"></div>
+        </div>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h4>Upload Media</h4>
+                <p>Upload a photo or video through our secure portal.</p>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-icon"><i class="fa-solid fa-face-viewfinder"></i></div>
+                <h4>Pattern Analysis</h4>
+                <p>AI model analyzes facial patterns and digital structure.</p>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-icon"><i class="fa-solid fa-microchip"></i></div>
+                <h4>Artifact Detection</h4>
+                <p>CNN detects manipulation artifacts invisible to the eye.</p>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <div class="step-icon"><i class="fa-solid fa-square-poll-vertical"></i></div>
+                <h4>Final Result</h4>
+                <p>Result shows Real or DeepFake with a confidence score.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Used & Features Section -->
+<section class="tech-features section-padding" id="technology">
+    <div class="container">
+        <div class="tech-grid">
+
+            <div class="tech-stack box-panel">
+                <h2>Technology Stack</h2>
+                <div class="cards-list">
+                    <div class="tech-item">
+                        <i class="fa-solid fa-robot"></i>
+                        <div>
+                            <h5>Artificial Intelligence</h5>
+                            <p>Core intelligence driving the platform.</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <div>
+                            <h5>Convolutional Neural Network (CNN)</h5>
+                            <p>Advanced architecture for image analysis.</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa-solid fa-cube"></i>
+                        <div>
+                            <h5>TensorFlow & TF Lite</h5>
+                            <p>Efficient model training and deployment.</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa-brands fa-python"></i>
+                        <div>
+                            <h5>Python Flask Backend</h5>
+                            <p>Robust and scalable server infrastructure.</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa-brands fa-html5"></i>
+                        <div>
+                            <h5>HTML, CSS, JavaScript</h5>
+                            <p>Responsive, dynamic, and modern interface.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features box-panel">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Detect deepfake images with high precision</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Detect manipulated videos frame by frame</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>Fast AI analysis processing times</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-user-astronaut"></i>
+                        <span>User friendly, intuitive interface</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Comprehensive detection history logging</span>
+                    </li>
+                </ul>
+                <div class="cta-box">
+                    <p>Ready to check your media?</p>
+                    <a href="{{ url_for('detect') }}" class="btn-neon-small">Try It Now</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
